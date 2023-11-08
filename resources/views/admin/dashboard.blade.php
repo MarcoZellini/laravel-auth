@@ -2,9 +2,30 @@
 
 @section('content')
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
-            {{ __('Dashboard') }}
-        </h2>
+        <div class="row">
+            <div class="col">
+                <h2 class="fs-4 text-secondary my-4">
+                    {{ __('Dashboard') }}
+                </h2>
+            </div>
+
+            <div class="col">
+                <div class="new_project text-end">
+                    <a class="btn btn-primary my-4" href="{{ route('admin.projects.create') }}">Add Project</a>
+                </div>
+            </div>
+        </div>
+
+        @if (session('message'))
+            <div class="alert alert-success" role="alert">
+                {{ session('message') }} 🤩
+            </div>
+        @endif
+
+
+
+
+
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
@@ -17,11 +38,12 @@
                             </div>
                         @endif
 
-                        <div class="table-responsive">
+                        <div class="table-responsive dashboard_table">
                             <table class="table table-primary m-0 align-middle text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
+                                        <th scope="col">DATE</th>
                                         <th scope="col">TITLE</th>
                                         <th scope="col">COVER IMAGE</th>
                                         <th scope="col">ACTIONS</th>
@@ -32,16 +54,18 @@
                                     @forelse ($projects as $project)
                                         <tr class="">
                                             <td>{{ $project->id }}</td>
+                                            <td>{{ date($project->created_at) }}</td>
                                             <td>{{ $project->title }}</td>
-                                            <td><img src="{{ asset($project->cover_image) }}" alt=""></td>
+                                            <td><img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+                                            </td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary m-1"
+                                                <a class="btn btn-primary m-1"
                                                     href="{{ route('admin.projects.show', $project->id) }}">More</a>
-                                                <a class="btn btn-sm btn-warning m-1"
+                                                <a class="btn btn-warning m-1"
                                                     href="{{ route('admin.projects.edit', $project->id) }}">Edit</a>
                                                 <!-- Modal trigger button -->
-                                                <button type="button" class="btn btn-sm btn-danger m-1"
-                                                    data-bs-toggle="modal" data-bs-target="#modalId-{{ $project->id }}">
+                                                <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
+                                                    data-bs-target="#modalId-{{ $project->id }}">
                                                     Delete
                                                 </button>
 
@@ -73,7 +97,7 @@
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit"
-                                                                        class="btnbtn-danger">Confirm</button>
+                                                                        class="btn btn-danger">Confirm</button>
                                                                 </form>
                                                             </div>
                                                         </div>

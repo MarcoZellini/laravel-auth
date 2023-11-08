@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -22,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,7 +32,18 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($val_data['title'], '-');
+
+        if ($request->has('cover_image')) {
+            $path = Storage::put('placeholders', $request->cover_image);
+            $val_data['cover_image'] = $path;
+        }
+
+        Project::create($val_data);
+
+        return to_route('admin.dashboard')->with('message', 'Well Done! Project created successfully!');
     }
 
     /**
@@ -38,7 +51,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', ['project' => $project]);
     }
 
     /**
@@ -46,7 +59,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', ['project' => $project]);
     }
 
     /**
@@ -54,7 +67,22 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($val_data['title'], '-');
+
+        if ($request->has('cover_image')) {
+            $path = Storage::put('placeholders', $request->cover_image);
+            $val_data['cover_image'] = $path;
+
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+        }
+
+        $project->update($val_data);
+
+        return to_route('admin.dashboard')->with('message', 'Well Done! Project edited successfully!');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectSeeder extends Seeder
@@ -20,7 +21,7 @@ class ProjectSeeder extends Seeder
             $project->title = $faker->realText(50);
             $project->slug = Str::slug($project->title, '-');
             $project->description = $faker->realText(300);
-            $project->cover_image = 'storage/placeholders/' . $faker->image('public/storage/placeholders', 640, 480, fullPath: false);
+            $project->cover_image = $faker->imageUrl(600, 400, format: 'jpg');
             $project->save();
         }
     }
