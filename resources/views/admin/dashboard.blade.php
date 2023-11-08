@@ -12,6 +12,7 @@
             <div class="col">
                 <div class="new_project text-end">
                     <a class="btn btn-primary my-4" href="{{ route('admin.projects.create') }}">Add Project</a>
+                    <a class="btn btn-success my-4" href="{{ route('admin.trash') }}">Trashed Projects</a>
                 </div>
             </div>
         </div>
