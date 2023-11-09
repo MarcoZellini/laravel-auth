@@ -34,8 +34,8 @@
         @endif
 
         <div class="row justify-content-center">
-            <div class="col">
-                <div class="card mb-5">
+            <div class="col mb-5">
+                <div class="card">
                     <h5 class="card-header">{{ __('Project List') }}</h5>
 
                     <div class="card-body p-0">
@@ -159,10 +159,10 @@
 
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
+                {{ $projects->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

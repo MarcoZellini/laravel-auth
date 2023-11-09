@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description', 300)->nullable();
             $table->text('cover_image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

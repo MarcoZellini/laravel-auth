@@ -50,9 +50,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">DATE</th>
-                                        <th scope="col">TITLE</th>
                                         <th scope="col">COVER IMAGE</th>
+                                        <th scope="col">TITLE</th>
+                                        <th scope="col">DATE</th>
                                         <th scope="col">ACTIONS</th>
                                     </tr>
                                 </thead>
@@ -61,8 +61,6 @@
                                     @forelse ($trashedProjects as $project)
                                         <tr class="">
                                             <td>{{ $project->id }}</td>
-                                            <td>{{ date($project->created_at) }}</td>
-                                            <td>{{ $project->title }}</td>
                                             <td>
                                                 @if (str_contains($project->cover_image, 'http'))
                                                     <img class="card-img" src="{{ asset($project->cover_image) }}"
@@ -73,12 +71,21 @@
                                                         alt="Project_image">
                                                 @endif
                                             </td>
+                                            <td>{{ $project->title }}</td>
+                                            <td>{{ $project->created_at }}</td>
                                             <td>
 
 
                                                 <!-- Modal trigger button -->
                                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                                     data-bs-target="#modalId-restore-{{ $project->id }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-kanban" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M13.5 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h11zm-11-1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11z" />
+                                                        <path
+                                                            d="M6.5 3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm-4 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm8 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3z" />
+                                                    </svg>
                                                     Restore
                                                 </button>
 
@@ -107,8 +114,16 @@
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('PUT')
-                                                                    <button type="submit"
-                                                                        class="btn btn-success">Restore</button>
+                                                                    <button type="submit" class="btn btn-success">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="16" height="16"
+                                                                            fill="currentColor" class="bi bi-kanban me-2"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M13.5 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h11zm-11-1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11z" />
+                                                                            <path
+                                                                                d="M6.5 3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm-4 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm8 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3z" />
+                                                                        </svg>Restore</button>
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -186,6 +201,7 @@
                     </div>
                 </div>
             </div>
+            {{ $trashedProjects->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

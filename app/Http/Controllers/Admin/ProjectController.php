@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->get()]);
+        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->paginate(7)]);
     }
 
     /**
@@ -101,7 +101,7 @@ class ProjectController extends Controller
 
     public function trashed()
     {
-        return view('admin.projects.trash', ['trashedProjects' => Project::onlyTrashed()->get()]);
+        return view('admin.projects.trash', ['trashedProjects' => Project::onlyTrashed()->orderByDesc('id')->paginate(7)]);
     }
 
     public function restoreTrash($slug)
