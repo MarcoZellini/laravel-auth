@@ -33,13 +33,9 @@
             </div>
         @endif
 
-
-
-
-
         <div class="row justify-content-center">
             <div class="col">
-                <div class="card">
+                <div class="card mb-5">
                     <h5 class="card-header">{{ __('Project List') }}</h5>
 
                     <div class="card-body p-0">
@@ -50,13 +46,13 @@
                         @endif
 
                         <div class="table-responsive dashboard_table">
-                            <table class="table table-primary m-0 align-middle text-center">
+                            <table class="table table-primary table-striped m-0 align-middle text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">DATE</th>
-                                        <th scope="col">TITLE</th>
                                         <th scope="col">COVER IMAGE</th>
+                                        <th scope="col">TITLE</th>
+                                        <th scope="col">DATE</th>
                                         <th scope="col">ACTIONS</th>
                                     </tr>
                                 </thead>
@@ -65,8 +61,6 @@
                                     @forelse ($projects as $project)
                                         <tr class="">
                                             <td>{{ $project->id }}</td>
-                                            <td>{{ date($project->created_at) }}</td>
-                                            <td>{{ $project->title }}</td>
                                             <td>
                                                 @if (str_contains($project->cover_image, 'http'))
                                                     <img class="card-img" src="{{ asset($project->cover_image) }}"
@@ -77,6 +71,8 @@
                                                         alt="Project_image">
                                                 @endif
                                             </td>
+                                            <td>{{ $project->title }}</td>
+                                            <td>{{ date($project->created_at) }}</td>
                                             <td>
                                                 <a class="btn btn-primary m-1"
                                                     href="{{ route('admin.projects.show', $project->slug) }}">
@@ -163,8 +159,8 @@
 
                                 </tbody>
                             </table>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@
                 <h2 class="fs-4 text-secondary flex-grow-1 m-0">
                     {{ __('Dashboard') }}
                 </h2>
-                <a class="btn btn-primary mx-1" href="{{ route('admin.projects.create') }}">
+                <a class="btn btn-primary d-flex align-items-center mx-1" href="{{ route('admin.projects.create') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-plus-circle me-2" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -15,13 +15,13 @@
                             d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg>Add New Project
                 </a>
-                <a class="btn btn-success mx-1" href="{{ route('admin.projects.index') }}">
+                <a class="btn btn-success d-flex align-items-center mx-1" href="{{ route('admin.projects.index') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash me-2" viewBox="0 0 16 16">
+                        class="bi bi-kanban me-2" viewBox="0 0 16 16">
                         <path
-                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                            d="M13.5 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h11zm-11-1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11z" />
                         <path
-                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                            d="M6.5 3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm-4 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm8 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3z" />
                     </svg>Back to Projects
                 </a>
             </div>
@@ -33,13 +33,9 @@
             </div>
         @endif
 
-
-
-
-
         <div class="row justify-content-center">
             <div class="col">
-                <div class="card">
+                <div class="card mb-5">
                     <h5 class="card-header">{{ __('Project List') }}</h5>
 
                     <div class="card-body p-0">
@@ -184,13 +180,9 @@
                                         </tr>
                                     @endforelse
 
-
-
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>

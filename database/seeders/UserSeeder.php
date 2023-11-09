@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     public function run(Faker $faker): void
     {
         $project = new User();
-        $project->name = 'admin';
+        $project->name = 'Admin';
         $project->email = 'admin@test.it';
         $project->password = 'password';
         $project->save();

@@ -35,7 +35,7 @@
                         </a>
 
                         <a class="btn btn-warning btn-lg w-100 d-flex justify-content-center align-items-center my-3"
-                            href="{{ route('admin.projects.edit', $project->id) }}">
+                            href="{{ route('admin.projects.edit', $project) }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-penci l-square me-1" viewBox="0 0 16 16">
                                 <path

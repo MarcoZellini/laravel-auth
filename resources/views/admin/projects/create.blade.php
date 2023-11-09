@@ -28,11 +28,11 @@
                 class="form-control @error('cover_image') is-invalid @enderror" placeholder="Insert a project title"
                 aria-describedby="helpId">
         </div>
-        <div class="mb-4">
-            <label for="description" class="form-label">Add Description</label>
-            <input type="text" name="description" id="description"
-                class="form-control @error('description') is-invalid @enderror" placeholder="Insert a project title"
-                aria-describedby="helpId" value="{{ old('description') }}">
+        <div class="mb-3">
+            <label for="description" class="form-label @error('description') is-invalid @enderror">Edit
+                Description</label>
+            <textarea class="form-control" name="description" id="description" rows="5"
+                placeholder="Insert a project description">{{ old('descritpion') }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Create New Project</button>
