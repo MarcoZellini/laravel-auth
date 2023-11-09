@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container-md">
         <div class="row">
             <div class="col d-flex align-items-center my-4">
                 <h2 class="fs-4 text-secondary flex-grow-1 m-0">
@@ -35,7 +35,7 @@
 
         <div class="row justify-content-center">
             <div class="col mb-5">
-                <div class="card">
+                <div class="card my-1">
                     <h5 class="card-header">{{ __('Project List') }}</h5>
 
                     <div class="card-body p-0">
