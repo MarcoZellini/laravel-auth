@@ -106,10 +106,7 @@ class ProjectController extends Controller
 
     public function restoreTrash($slug)
     {
-        //dd($slug);
         $project = Project::withTrashed()->where('slug', '=', $slug)->first();
-        //dd($project);
-
         $project->restore();
         return to_route('admin.trash')->with('message', 'Well Done! Project restored successfully!');
     }
