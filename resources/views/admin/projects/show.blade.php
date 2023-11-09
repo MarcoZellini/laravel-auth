@@ -4,6 +4,7 @@
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Project Number: # {{ $project->id }}</h1>
+            <h5>{{ $project->slug }}</h5>
             <img class="img-fluid" src="{{ asset('storage/' . $project->cover_image) }}" alt="">
             <p class="col-md-8 fs-4">{{ $project->description }}</p>
             <a class="btn btn-primary btn-lg me-2" href="{{ route('admin.dashboard') }}">Back</a>

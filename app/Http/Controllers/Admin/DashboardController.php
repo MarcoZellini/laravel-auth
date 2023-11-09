@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard', ['projects' => Project::orderByDesc('id')->get()]);
+        return view('admin.dashboard');
     }
 }

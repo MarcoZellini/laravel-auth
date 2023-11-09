@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard', ['projects' => Project::all()]);
+        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->get()]);
     }
 
     /**
@@ -34,7 +34,7 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
 
-        $val_data['slug'] = Str::slug($val_data['title'], '-');
+        $val_data['slug'] = Project::generateSlug($request->title);
 
         if ($request->has('cover_image')) {
             $path = Storage::put('placeholders', $request->cover_image);
@@ -43,7 +43,7 @@ class ProjectController extends Controller
 
         Project::create($val_data);
 
-        return to_route('admin.dashboard')->with('message', 'Well Done! Project created successfully!');
+        return to_route('admin.projects.index')->with('message', 'Well Done! Project created successfully!');
     }
 
     /**
@@ -69,7 +69,7 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
 
-        $val_data['slug'] = Str::slug($val_data['title'], '-');
+
 
         if ($request->has('cover_image')) {
             $path = Storage::put('placeholders', $request->cover_image);
@@ -80,9 +80,13 @@ class ProjectController extends Controller
             }
         }
 
+        if (!Str::is($project->getOriginal('title'), $request['title'])) {
+            $val_data['slug'] = Project::generateSlug($request->title);
+        }
+
         $project->update($val_data);
 
-        return to_route('admin.dashboard')->with('message', 'Well Done! Project edited successfully!');
+        return to_route('admin.projects.index')->with('message', 'Well Done! Project edited successfully!');
     }
 
     /**
@@ -92,7 +96,7 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return to_route('admin.dashboard')->with('message', 'Well Done! Project deleted successfully!');
+        return to_route('admin.projects.index')->with('message', 'Well Done! Project deleted successfully!');
     }
 
     public function trashed()
