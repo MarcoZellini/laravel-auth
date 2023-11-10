@@ -1,9 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
 
-.dashboard_table {
+.projects_table {
     img {
         object-fit: cover;
         object-position: top;
         height: 75px;
+    }
+}
+
+.dashboard {
+    .last_project_image {
+
+        object-fit: cover;
+        object-position: top;
+        height: 200px;
+
     }
 }

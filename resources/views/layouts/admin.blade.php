@@ -39,10 +39,6 @@
                         <span class="navbar-toggler-icon text-white"></span>
                     </button>
 
-
-
-
-
                     <div class="search-wrapper d-flex w-100 my-sm-4 align-items-center">
                         <input class="form-control flex-grow-1 w-auto me-2" type="search" placeholder="Search"
                             aria-label="Search">

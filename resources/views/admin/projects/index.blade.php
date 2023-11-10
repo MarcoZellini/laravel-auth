@@ -4,8 +4,8 @@
     <div class="container-md">
         <div class="row">
             <div class="col d-flex align-items-center my-4">
-                <h2 class="fs-4 text-secondary flex-grow-1 m-0">
-                    {{ __('Dashboard') }}
+                <h2 class="fs-4 text-secondary my-2 text-capitalize flex-grow-1">
+                    {{ __(Request::segment(2)) }}
                 </h2>
                 <a class="btn btn-primary mx-1" href="{{ route('admin.projects.create') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -45,7 +45,7 @@
                             </div>
                         @endif
 
-                        <div class="table-responsive dashboard_table">
+                        <div class="table-responsive projects_table">
                             <table class="table table-primary table-striped m-0 align-middle text-center">
                                 <thead>
                                     <tr>
@@ -64,11 +64,11 @@
                                             <td>
                                                 @if (str_contains($project->cover_image, 'http'))
                                                     <img class="card-img" src="{{ asset($project->cover_image) }}"
-                                                        alt="Project_image">
+                                                        alt="img">
                                                 @else
                                                     <img class="card-img"
                                                         src="{{ asset('storage/' . $project->cover_image) }}"
-                                                        alt="Project_image">
+                                                        alt="img">
                                                 @endif
                                             </td>
                                             <td>{{ $project->title }}</td>
