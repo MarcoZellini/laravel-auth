@@ -16,13 +16,14 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $project = new Project();
             $project->title = $faker->realText(80);
             $project->slug = Str::slug($project->title, '-');
             $project->description = $faker->realText(300);
             $project->cover_image = 'https://unsplash.it/600/400?image=' . rand(1, 1000);
-            $project->github_repo_link = $faker->url();
+            $project->github_link = $faker->url();
+            $project->website_link = $faker->url();
             $project->save();
         }
     }

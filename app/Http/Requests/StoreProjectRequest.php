@@ -25,7 +25,9 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:80', Rule::unique('projects')],
             'description' => ['nullable', 'string', 'max:300'],
-            'cover_image' =>  ['nullable', 'image', 'max:1024']
+            'cover_image' =>  ['nullable', 'image', 'max:1024'],
+            'github_link' => ['nullable', 'string', 'max:255', Rule::unique('projects')],
+            'website_link' => ['nullable', 'string', 'max:255', Rule::unique('projects')]
         ];
     }
 }
