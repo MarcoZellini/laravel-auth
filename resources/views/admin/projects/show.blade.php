@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="p-5 mb-4 rounded-3">
+    <div class="p-5 mb-4 rounded-3 show">
         <div class="container-fluid py-lg-5">
             <div class="row row-cols-1 row-cols-xl-2 flex-column flex-xl-row g-4">
                 <div class="col">
@@ -11,12 +11,15 @@
                             <p>Project Number: # {{ $project->id }}</p>
                         </div>
 
-                        @if (str_contains($project->cover_image, 'http'))
-                            <img class="card-img rounded-0" src="{{ asset($project->cover_image) }}" alt="">
-                        @else
-                            <img class="card-img rounded-0" src="{{ asset('storage/' . $project->cover_image) }}"
-                                alt="">
-                        @endif
+                        <div>
+                            @if (str_contains($project->cover_image, 'http'))
+                                <img class="card-img rounded-0 show_image" src="{{ asset($project->cover_image) }}"
+                                    alt="">
+                            @else
+                                <img class="card-img rounded-0 show_image"
+                                    src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+                            @endif
+                        </div>
 
                         <div class="card-body">
                             <p>{{ $project->description }}</p>

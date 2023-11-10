@@ -6,22 +6,8 @@
             {{ __(Request::segment(2)) }}
         </h2>
         <div class="row justify-content-center g-4">
-            <div class="col-12">
-                <div class="card">
-                    <h6 class="card-header text-uppercase">{{ __('User Dashboard') }}</h6>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        Welcome {{ Auth::user()->name }}!
-                    </div>
-                </div>
-
-            </div>
+            <h5 class="text-muted">Review</h5>
             <div class="col-12 col-md-6">
                 <div class="card">
                     <h6 class="card-header text-uppercase">Projects</h6>
@@ -38,6 +24,8 @@
                     </div>
                 </div>
             </div>
+
+            <h5 class="text-muted">Last Projects</h5>
 
             @foreach ($last_projects as $project)
                 <div class="col-12 col-lg-4 mb-3">
